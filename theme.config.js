@@ -6,7 +6,7 @@ export default {
     <>
       <span className="mr-2 font-extrabold hidden md:inline">Hypertheory</span>
       <span className="text-gray-600 font-normal hidden md:inline">
-        Hypertheory Training Resources
+        Training Resources
       </span>
     </>
   ),
@@ -62,6 +62,6 @@ export default {
   nextLinks: true,
   footer: true,
   footerEditLink: 'Edit this page on GitHub',
-  footerText: <>MIT {new Date().getFullYear()} © Nextra.</>,
+  footerText: <>MIT {new Date().getFullYear()} © Hypertheory, Inc.</>,
   unstable_faviconGlyph: '👋',
 }
