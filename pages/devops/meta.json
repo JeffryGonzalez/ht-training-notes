@@ -1,0 +1,6 @@
+{
+    "docker": "Docker",
+    "kubernetes": "Kubernetes",
+    "ci/cd": "ci_cd"
+  }
+  
