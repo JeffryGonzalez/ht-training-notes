@@ -1,7 +1,110 @@
-# Introduction to Networking
-
 import Callout from 'nextra-theme-docs/callout'
 
 <Callout>
-    This will be filled in.
+    This is a work in progress. More will be added.
 </Callout>
+# Introduction to Networking
+
+This is an attempt to create a somewhat detailed list of the things you need to know to be a competent developer in Angular, and map it to training, or other resources. This is just a brain dump for now.
+
+I want this to be enough information to "fake your way through a job interview", and to give people some context for all this stuff. And then have either other resources linked, or enough information that people can dig further by doing some searches on their own.
+
+
+## Hostnames / IP Addresses
+
+Each computer (technically a "node") on the network has three ways they are identified:
+
+- A "friendly" hostname. Your computer name. 
+- An internet IP Address
+- A MAC Address
+
+So, for example, you try to connect to another machine on your network you might use a **UNC** address. That is something like typing `\\somecomputer\someshare` into the Windows Explorer address bar, or mapping a network drive.  The `somecomputer` portion of that is the hostname. You can see your hostname by running a windows command prompt (Type Windows Key + R, then type CMD) and typing `hostname` (this command works on Macs and Linux operating systems, too). 
+
+So, when you make a request for that "friendly name", the computer needs to know what the Internet Address is. It uses various techniques to find this address (like DNS - discussed below), and *then* it has to decide which actual network card should it send this information to. Network cards have a unique identifier attached to them by the manufactuer called a **MAC Address**. (MAC - 'Media Access Control'). Computers use a protocol called "Address Resolution Protocol (ARP)" on a LAN to figure out which specific machine should receive this data. 
+
+For getting to resources outside your LAN you probably are most familiar with URLs. You type something like `http://microsoft.com` into your computer browser's address bar. The process is similiar here. A DNS lookup is performed to find the IP address on the `microsoft.com` node. It certainly isn't on your LAN, so internet protocol routing finds where that machine physically resides. 
+
+## Localhost
+Just like we all have names (but probably not IP Addresses or MAC Addresses), we can always refer to ourselves as "me". The "me" of computer networks is `localhost`. This is an *alias* for whatever machine you are currently on. So, if you type, for example, `\\localhost` in your Windows Explorer, you are saying "Show me the network stuff available on this machine". If you machine's hostname was `captain-levi`, typing `\\localhost` and `\\captain-levi`are the same things. 
+
+Each node on the network also has a similar alias for it's IP address. That is `127.0.0.1`.  That is the "me" of IP addresses. 
+
+> Note: You may have seen shirts or stickers that sau "There is no place like 127.0.0.1". If you didn't get the joke before, you do now. And it isn't all that funny so you haven't been missing much. Computer humor is usually that way.
+
+
+## VPN
+
+A VPN (Virtual Private Network) is a way for you to connect to an internal, private network from outside the network as if you were connected locally. The VPN creates a "tunnel" through the public internet that is encrypted and secure. 
+
+## Network Segments / Switches / Gateways 
+
+Our networks are broken into groups to manage traffic load. These are called *segments*, or *subnets* and IP addresses have embedded in them information about what segment or subnet your computer belongs to [subnet masking](https://en.wikipedia.org/wiki/Subnetwork). 
+
+The difference between a subnet and a segment is that segments are subnets that are physically separated from other network segments by hardware (usually a network *switch*).
+
+A *gateway* is a device that translates from one network type to another. For example, on your home network, you might be using Wifi and Ethernet, but be connected to the internet by a cable modem or fiber. The gateway translates one kind of network to another kind of network.
+
+## Network Layers
+
+The [OSI Model](https://www.imperva.com/learn/application-security/osi-model/) attempts to explain the architecture of computer networks, and the functionality that is provided all the way from how the electrons are received by your computer (Physical Layer at the bottom) to how applications talk to each other (Application Layer). 
+
+You might here networking people talking about the layers to identify the functionality of different types of software or hardware. A "Layer 2 Switch" vs. a "Layer 3 Switch" identifies where, on the OSI Model, the device operates.
+
+HTTP for example is a Layer 7 protocol. It does not directly depend on the layers at the bottom - you can use a web browser on a WiFi network, a DSL connection, or wired network. The responsibility for those kind of details are handled further down the "stack".
+
+## DNS
+
+The Domain Name System is is a hierarchical and decentralized database of domain names to IP address mappings.
+
+This is how a request for something like `www.progressive.com` gets translated into the IP address needed for actual network communication. Hierarchical here means that different sets of these servers handle different levels of translation. For example, conceptually when you try to resolve a name like `www.progressive.com` there is a "top level" DNS server that knows the other DNS server that handles the `.com` domains (as opposed to the .org, .edu, .io, etc.). It sends you to that server. That server knows what DNS handles "progressive", and send you to that server, and finally that server can say "oh, our server called `www` has this IP address.
+
+DNS servers have different kinds of *records*. Some are for hosts or nodes, some are for aliases, some are for things like how to route mail, etc.
+
+If you want your server to have a publicly available name, you purchase a domain name, which is really buying an entry into the DNS database. 
+
+
+## Proxy Servers
+Proxy servers are servers that work as a sort of go-between ('proxy' if you will), between the client making the request and the server that fulfills the request. A proxy server will receive a network request and map it to an (often internal server) that fulfills the request. They can modify the requests or responses, and take on other responsibilities like caching responses or SSL termination.
+
+## Load Balancers
+A load balancer is a kind of proxy server that uses various techniques to balance the processing of requests across more than one server. These are used to maintain high-availability. One server might not be enough to handle all the traffic your application is receiving. Users have the address of the load balancer, and it decides which server should handle the request.
+
+The techniques for this can be very simple (like 'round robin' load balancing), to much more sophisticated techniques such as monitoring the server load of each server and directing new traffic to the one that is in the best shape to fulfill the request.
+
+Load balancers also have a role to play in allowing us to do "live deployments" and "rolling updates" in production. New servers with the updated software can be created, and new requests are transmitted to these servers. Eventually the older version will "starve", and can be safely removed.
+
+## Network Protocols (especially TCP)
+There are a lot of different protocols (agreed upon rules for communication) on the internet. Some are application layer (layer 7), like HTTP, SMTP (for mail), etc. 
+
+The two most common Layer 4 protocols that sit below these are the User Datagram Protocol (UDP) and the Transmission Control Protocol (TCP).
+
+UDP is connectionless and is used when loss of packets (small bits of information transferred across the network) is not a show stopper. Examples would be streaming video, voice over IP, and lots of real-time gaming.
+
+TCP provides much more reliable communication (at the expense of increased processing requirements). 
+
+A single node on the network can have several applications concurrently exposing services that use the TCP protocol. Each of these applications has to identify itself by using a *port*. A port is just a number to identiify the specific application. No two applications can use the same port on the same machine.
+
+Certain common applications have "Well known" ports they use. For example, the default installation of Microsoft SQL Server runs on TCP Port 1433.
+
+Web servers run on TCP Port 80 by default. So a request to `http://mysite.com` is the same as `http://mysite.com:80/`
+
+(**note**: if your web server is configured to run on a different port, then you must specify it in the request URL, e.g.  `http://127.0.0.1:1337/demo.html`)
+
+Web requests that use Transport Layer Security (https) use port 443 by default.
+
+## HTTP / HTTP 1.1 / HTTP 2 / HTTP 3
+
+The WorldWideWeb (WWW) was created by English computer scientist Tim Berners-Lee in 1989. It was designed as an information system and included the following components:
+- Web resources
+- URLs (addresses or names for those web resources)
+- Hyperlinks
+- The HTTP Protocol
+
+HTTP offically stands for "Hypertext Transfer Protocol" and is a Layer-7 protocol in the OSI model. 
+
+HTTP uses the TCP Protocol for communication. In the original version of HTTP an HTML document would be requested and delivered to the client and the TCP connection would be closed. The user would be presented a document which may contain hyperlinks. When the user clicked a hyperlink, the TCP connection to the server hosting that resource would be established and an HTTP request would be sent. After that response was delivered, the TCP connection would be closed.
+
+By making HTTP "connectionless" like this, many more requests could be handled by a single server.
+
+
+## HTTPS - SSL and TLS

@@ -1,5 +1,8 @@
 {
-  "index": "Introduction",
+  "index": "Home",
   "networking": "Networking",
-  "devops": "DevOps Topics"
+  "devops": "DevOps Topics",
+  "angular": "Angular Development",
+  "courses": "Courses",
+  "youtube": "YouTube Videos"
 }
