@@ -1,6 +1,5 @@
 {
-    "docker": "Docker",
-    "kubernetes": "Kubernetes",
-    "ci_cd": "CI/CD"
+    
+    "links": "Some Useful Links"
   }
   
