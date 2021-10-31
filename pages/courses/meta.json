@@ -1,4 +1,7 @@
 {
-    "index": "2021 Courses",
-    "newcourses": "Future (2022) Proposed Courses"
-}
+    "index": "Overview",
+    "angular": "Angular",
+    "services": "DevOps and Services",
+    "intro": "Intro to Programming",
+    "golang": "Go Programming"
+} 

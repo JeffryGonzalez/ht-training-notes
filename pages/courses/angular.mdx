@@ -1,0 +1,149 @@
+# Angular Development
+
+Hypertheory's Angular developer training is designed for frontend web developers wishing to deepen their Angular skills and learn how to successfully design, build, and test Angular applications that run in a cloud native, enterprise environment.
+
+## Prerequisites to Courses
+
+Developers attending Hypertheory's Angular training should feel confident in the following topics and skills:
+
+- Deep understanding of the web and associated technologies (Http, Web Browser, Web Browser APIs)
+- HTML, including semantic HTML and accessibility
+- Basic understanding of CSS
+- JavaScript, including DOM manipulation with JavaScript and accessing the browser APIs (geolocation, indexeddb, fetch, etc.)
+- Basic understanding of Angular, including `NgModules`, `Components`, basic routing, etc.
+
+In addition, it is _strongly_ encouraged that developers attend the Hypertheory course _DevOps Essentials_. [Developer Testing](../../drafts/developer-testing.md)
+
+## Angular State Management with NGRX
+
+This is a _three-day_ instructor lead course.
+
+While a beginning-level Angular developer entering this training would have the basic skills to create simple Angular applications, when working in a team of developers, having consistent patterns for making data available to components, modeling interactions in a observable, traceable way, and dealing with API calls is imperative.
+
+### Objectives
+
+The primary objective of this course is to prepare beginning-level Angular developers to recognize, categorize, and respond to issues in Angular applications worked on by a team of developers constantly delivering business value in a CI/CD environment.
+
+The objective of this course is for developers to be able to understand and implement the following:
+
+#### Design a Redux-style State Managment System in an Angular Application.
+
+> Redux is a software pattern for _stateful_ client-side applications that allow developers to work in teams and share data and behavior between components and features in an applicaiton. User-interface has a high-rate of churn - we need a good way to design applications that have a high-degree of reliability, performance, and responsiveness while also allowing us to quickly implement new features. The key pieces and the "flow" of both data and interactions (actions) in an Angular application will be presented.
+
+#### State Caching and Retention in Angular Applications
+
+> "State Management" means we will hold data in the memory of our applications. This data will often be out of sync with the data owned by the server. We will learn techniques for ensuring _eventual consistency_ in a reliable way, minimizing distracting "round-trips" to the server. We will learn techniques and approaches for keeping application state "up to date" in the client transparently to the user.
+
+#### Design the Application State in an Angular Application
+
+> In Redux, there is a "single source of truth" for application state. We will explore best-practices for implementing our application state that is tolerant to changes, easy to refactor when we need to, and supports immutability. This section will include a thorough introduction the the `@ngrx/entity` library, including the `EntityAdapter` utility. At the end of this section, developers will know how to design state to hold simple (scalar) values and lists of entities.
+
+#### Query application state as Observables with Selector Functions
+
+> Components (and sometimes services and effects) need access to the application state. We will learn how to write robust _selector functions_ that allow your code to observe the application state _over time_, and react immediately to changes. Special emphasis will be places on _joining_ various selector functions to provide _projected_ data for components.
+
+#### Design and Implement Actions
+
+> Redux expresses interactions with the application as `Actions`s. We will learn how to successfully design and dispatch actions, including actions for _events_, _commands_, _documents_, and error handling.
+
+#### Handle API calls Reliably with Effects
+
+> In Redux and Angular, we use components to provide an interfact for users, and Effects to interface with the "outside world", most notably when talking to server-side APIs. We will master the Angular `HttpClient`, and then learn to design reactive _Effects_ to make asynchronous calls to APIs to retrieve data, and synchronize the client state with the server state. Developers will also learn how to securely deal with environment data in Angular applications, including internal URLs.
+
+#### Recover from API Errors
+
+> Users of our applications need to be shielded from the harsh reality of flaky networks, latency issues, and just failing APIs. We will learn strategies for gracefully handling both transient and system errors in Angular applications to ensure users still will be able to get the maximum benefit from our applications. Techniques for retrying calls, correcting state issues when errors are received from APIs, and compensating activities in Eventual Consistency patterns will be provided.
+
+#### Design and Implement Angular Routing
+
+> Angular Routing provides the most important "source of truth" for the state of the application. We will learn how to design a successful routing strategy and keep the router state synced with the Redux application state. We will also learn how to implement _route guards_ to limit user access to certain areas of the application unless rules are fulfilled.
+
+#### Introduction to Deployment and Feature Toggles
+
+> This topic, while covered in more depth in the Advanced Angular training (below), will be introduced to show Angular developers how to build, deploy, and host Angular applications, including an introduction to feature toggles, and "branch by abstraction" in Angular applications.
+
+## Angular Developer Testing
+
+This is a _three-day_ instructor lead course.
+
+In a DevOps environment, developers take responsibility for the quality (internal and external) of their applications. This course will emphasize the process for creating automated tests for our Angular applications, including low-level Unit Tests, and Isolated Integration Tests.
+
+### Prerequisites
+
+This course is designed for established Angular developers who regularly deliver Angular application code in a team environment. A thorough understanding of both Angular and Redux State Management using @NGRX is required. Please consider taking the [Angular State Managment with NGRX](#angular-state-management-with-ngrx) Course prior to taking this course.
+
+### Objectives
+
+The objective of this course is for developers to be able to undertand and implement the following:
+
+#### Learn Low-Level Unit Testing, including Test First, and Test-Driven Development
+
+> We will start with the "tool chest" of developer testing techniques. This module will teach low-level testing to ensure complex algorithm and interactions in "white box" testing. Developers will learn teachniques to test code with dependencies using mocks, stubs, and dummies, designing complex code with Test-Driven Development, and good test-fixture design using Jasmine.
+
+#### Write Isolated Integration Tests for Angular Components and Full Applications
+
+> While low-level Unit tests are helpful, they can cause issues with code maintainability, and still leave "holes" of untested code. We will learn to create increasingly higher-level tests to ensure our components and our application meets our understanding of the requirements. Developers will learn to use the _Angular Testing Library_ to created Component tests that exercise the component in a variety of scenarios. We will also expore other testing tools like Cypress and Plarwright.
+
+#### Understand the Role of Developer Testing in Overall Application Delivery
+
+> Now that we know the options available to test our Angular applications as developers, we will learn how to create (or discover) the best testing plan to ensure that when our code is committed and run through the _gauntlet_ or automated tests, we are doing all we can to confidently move our code to the next environment while providing the flexibility to allow us to refactor, learn, and change our code over time as new technical and business requirements are introduced.
+
+#### Automated Testing in Build and Testing Locally and In Project Pipeline
+
+> Developers will learn to created an automated process for linting, building, unit testing, and (isolated) integration testing their Angular applications. We will create `git` pre-commit hooks to ensure our code meets quality standards before pushing our code for others, and learn to build our code and run the tests in our pipeline.
+
+#### Create a Testing Plan for your Angular Applications that Grows in its Comprehensiveness with Feedback from Software Testers
+
+> Using the feedback provided by our build and test pipelines, we will learn to adjust our testing strategy to ensure smooth and quick delivery of our code while maintaining and even increasing the quality without losing the flexibility we need to meet the needs of the business.
+
+#### Extract Heavily Tested Stable Features to Feature Modules or Library Modules
+
+> The best way to streamline your test pipelines over time is to identify the areas of your application that should be extracted to a shared module. We will learn how to extract useful functionality to an Angular module, create an improved test-plan for the module, and deliver it using NPM.
+
+#### Feature Toggles and CI/CD with Angular
+
+> With Continuous Integration (CI), we need to work on and test features that may not be released yet, without long-lived branches. We will learn how to create tests for features that are in the _hypothesis_ stage, and make them ready for release when it is time.
+
+#### Expecting Chaos: Developer Testing for Failures Outside of Your Application
+
+> Isolated Integration Tests allow us to _simulate_ expected challenges in the production environment, including network failures, authentication issues, etc. We will do exploratory testing to discover risky paths in our code, develop mitigations, and deploy the tests to our pipeline.
+
+#### Automated Accessibility Testing
+
+> We will take a brief look at automated Accessibility testing of our Angular applications, and how to integration tests to check your applications meet accessibility requirements, including color contrast, and keyboard access.
+
+## Advanced Angular
+
+This is a _three-day_ instructor lead course.
+
+This course is designed to round-off an Angular developer's education by providing advanced techniques for managing state, writing complex selector functions, understanding the `rxjs` library and common operators. We will also learn advanced form validation including asynchronous validation with server side approval, as well as lazy-loading Angular modules. Building feature module libraries using NGRX Component State will also be presented.
+
+### Prerequisites
+
+This course is designed for established Angular developers who regularly deliver Angular application code in a team environment. A thorough understanding of both Angular and Redux State Management using @NGRX is required. Please consider taking the [Angular State Managment with NGRX](#angular-state-management-with-ngrx) Course prior to taking this course. It is also helpful, but not necessary to have taken the [Angular Developer Testing](#angular-developer-testing) course prior to this course.
+
+It is also helpful if developers have _some_ familiarity with creating server-side HTTP based APIs for this course.
+
+### Objectives
+
+The objective of this course is for developers to be able to undertand and implement the following:
+
+#### Design Usable Forms with Custom Validation
+
+> Forms in Angular, or any web application framework, are where we spend a lot of time as developers. We will learn techniques to design good form User Experience including Accessible forms with focus trapping, announce service, and `ARIA` attributes. We will also learn to create custom synchronouse and asynchronous validation functions.
+
+#### Server-Side Integration Patterns
+
+> We will learn patterns to increase reliability and decrease complexity in Effects with patterns for integrating with back-end HTTP services. Developers will learn how to create custom Http interceptors in Angular to monitor and modify Http requests and responses (including Authorization headers), as well as the "Back-End for Front-End (BFF)" pattern to keep the back-end in sync with the front-end. Developers will aso learn how to honor HTTP Cache headers for resources kept in the NGRX Store.
+
+#### Using Web Sockets For Stateful Clients
+
+> This course will include a quick introduction to using stateful Web Sockets for both notifications from the server, and transparent syncing of data with the Back-End.
+
+#### Lazy-Loading Angular Modules and Other Performance Enhancing Techniques
+
+> As Angular applications grow, features are added for more specialized users. By Lazy Loading certain features only when the user needs them, we can increase our first "paint" time of the application. We will also learn how to use the browser developer tools to detect and mitigate other performance issues in our application, including load time, and component re-paint. Service workers will be introduced for doing background-processing of long-running client-side tasks.
+
+#### Advanced CSS and Styling Techniques for Angular Developers
+
+> Developers will have a deep-dive into Angular hierarchical styling, including component styles and how to control how styling changes impact child components. We will also look at technologies like SASS for pre-compiling your CSS for the browser, making style information more flexibile and "themeable".
