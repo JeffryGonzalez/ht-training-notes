@@ -1,0 +1,59 @@
+## Angular State Management with NGRX
+
+This is a _three-day_ instructor lead course.
+
+While a beginning-level Angular developer entering this training would have the basic skills to create simple Angular applications, when working in a team of developers, having consistent patterns for making data available to components, modeling interactions in a observable, traceable way, and dealing with API calls is imperative.
+
+### Objectives
+
+The primary objective of this course is to prepare beginning-level Angular developers to recognize, categorize, and respond to issues in Angular applications worked on by a team of developers constantly delivering business value in a CI/CD environment.
+
+The objective of this course is for developers to be able to understand and implement the following:
+
+#### Design a Redux-style State Managment System in an Angular Application.
+
+> Redux is a software pattern for _stateful_ client-side applications that allow developers to work in teams and share data and behavior between components and features in an applicaiton. User-interface has a high-rate of churn - we need a good way to design applications that have a high-degree of reliability, performance, and responsiveness while also allowing us to quickly implement new features. The key pieces and the "flow" of both data and interactions (actions) in an Angular application will be presented.
+
+#### State Caching and Retention in Angular Applications
+
+> "State Management" means we will hold data in the memory of our applications. This data will often be out of sync with the data owned by the server. We will learn techniques for ensuring _eventual consistency_ in a reliable way, minimizing distracting "round-trips" to the server. We will learn techniques and approaches for keeping application state "up to date" in the client transparently to the user.
+
+#### Design the Application State in an Angular Application
+
+> In Redux, there is a "single source of truth" for application state. We will explore best-practices for implementing our application state that is tolerant to changes, easy to refactor when we need to, and supports immutability. This section will include a thorough introduction the the `@ngrx/entity` library, including the `EntityAdapter` utility. At the end of this section, developers will know how to design state to hold simple (scalar) values and lists of entities.
+
+#### Query application state as Observables with Selector Functions
+
+> Components (and sometimes services and effects) need access to the application state. We will learn how to write robust _selector functions_ that allow your code to observe the application state _over time_, and react immediately to changes. Special emphasis will be places on _joining_ various selector functions to provide _projected_ data for components.
+
+#### Design and Implement Actions
+
+> Redux expresses interactions with the application as `Actions`s. We will learn how to successfully design and dispatch actions, including actions for _events_, _commands_, _documents_, and error handling.
+
+#### Handle API calls Reliably with Effects
+
+> In Redux and Angular, we use components to provide an interfact for users, and Effects to interface with the "outside world", most notably when talking to server-side APIs. We will master the Angular `HttpClient`, and then learn to design reactive _Effects_ to make asynchronous calls to APIs to retrieve data, and synchronize the client state with the server state. Developers will also learn how to securely deal with environment data in Angular applications, including internal URLs.
+
+#### Recover from API Errors
+
+> Users of our applications need to be shielded from the harsh reality of flaky networks, latency issues, and just failing APIs. We will learn strategies for gracefully handling both transient and system errors in Angular applications to ensure users still will be able to get the maximum benefit from our applications. Techniques for retrying calls, correcting state issues when errors are received from APIs, and compensating activities in Eventual Consistency patterns will be provided.
+
+#### Design and Implement Angular Routing
+
+> Angular Routing provides the most important "source of truth" for the state of the application. We will learn how to design a successful routing strategy and keep the router state synced with the Redux application state. We will also learn how to implement _route guards_ to limit user access to certain areas of the application unless rules are fulfilled.
+
+#### Introduction to Deployment and Feature Toggles
+
+> This topic, while covered in more depth in the Advanced Angular training (below), will be introduced to show Angular developers how to build, deploy, and host Angular applications, including an introduction to feature toggles, and "branch by abstraction" in Angular applications.
+
+### Expected Outcome Of This Training
+
+At the conclusion of the Angular State Management with NGRX course, developers will:
+
+- Understand the necessity for holistic state management in Angular Applications
+- Know how to design application state for performance and reusability
+- Know how to create selector functions that are highly optimized
+- Understand and implement actions for UI and Service interactions
+- Know how to efficiently interact with backend services using HTTP and other asynchronous APIs
+- Utilize the state held by the Angular Router to make your Angular applications for resiliant and usable
+- Understand how to work in the "chaos" of a deployed application, dealing with transient network failures, and responding to errors from APIs.

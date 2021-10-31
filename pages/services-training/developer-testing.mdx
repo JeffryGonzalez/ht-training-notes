@@ -1,0 +1,49 @@
+## Developer Testing Services and APIs
+
+This is a _three-day_ instructor lead course.
+
+In a DevOps environment, developers take responsibility for the quality (internal and external) of their applications and their build and test pipelines. This course will emphasize the process for creating automated tests for our services, including low-level Unit Tests, and Isolated Integration Tests.
+
+### Prerequisites
+
+This course will emphasize (but not be limited to) developer testing of HTTP based APIs created with .NET. Developers should consider taking [Web APIs with .NET](#web-apis-with-net) first.
+
+### Objectives
+
+The objective of this course is for developers to be able to understand, plan, and implement a suite of automated tests for their services, including the following:
+
+#### Learn Low-Level Unit Testing, Including Test-First and Test-Driven Development
+
+> We will start with the "tool chest" of developer testing techniques. This module will teach low-level testing to ensure complex algorithm and interactions in "white box" testing. Developers will learn teachniques to test code with dependencies using mocks, stubs, and dummies, designing complex code with Test-Driven Development, and good test-fixture design using xUnit.
+
+#### Writing Isolated Integration Tests for Services
+
+> While low-level Unit Tests are helpful, they can cause issues with code maintainability, and still leave "holes" of unverified code. We will learn to create increasingly high-level tests to ensure our services meet our understanding of the requirements, from the perspective of the user of our API or service.
+
+#### Understanding the Role of Developer Testing in Overall Application Delivery
+
+> Now that we know the options available to test our servicesas developers, we will learn how to create (or discover) the best testing plan to ensure that when our code is committed and run through the _gauntlet_ or automated tests, we are doing all we can to confidently move our code to the next environment while providing the flexibility to allow us to refactor, learn, and change our code over time as new technical and business requirements are introduced.
+
+#### Automated Testing: Locally and in Build and Test Pipelines
+
+> Developers will learn to create an automated process for building, unit testing, and running isolated integration tests for their services locally. We will create `git` `pre-commit` and `pre-push` hooks to ensure our code meets quality standards before pushing our code to the repo for others. We will then learn how to replicate the build and test runs in the pipeline.
+
+#### Creating a Testing Plan for your Services That Grows in its Comprehensiveness with Feedback from Software Testers
+
+> First, by using the feedback from our pipelines, and then the feedback "downstream" from our testers, we will learn techniques to have our test suite "learn" how to prevent similar problems in the future.
+
+#### Extract Heavily Tested Stable Features and Utilities To New Services or Packages
+
+> Occassionally, you discover a part of your service is particularly stable, and another part is the focus of continual change and improvement. We will learn two techniques for "extracting a Microservice" to enforce temporal coupling - keeping the things that change and the things that stay the same apart for ease and speed of deployment and increased reliability. We will also learn how to extract utilities, validators, etc. into NuGet packages so they can be tested and deployed independently from the code that uses them.
+
+### Expected Outcome of this Training
+
+At the conclusion of the Developer Testing Services and APIs, developers will be able to:
+
+- Understand and have the skills to implment Unit Tests and Isolated Integration Tests for their services and APIs
+- Have the knowledge to intelligently create a testing plan for services that ensure high code quality without "cementing in" a bad or temporary design.
+- Know how to design and run automated tests locally and in a Pipeline.
+- Have the skills to use feedback from automated tests to improve the design of their code.
+- Implement and use techniques like feature toggles to successfully utilize continuous integration.
+- Know how to design and write tests that simulate common "real world" problems services have in production.
+- Extract new microservices or packages to increase flexibility and realability of the code base.

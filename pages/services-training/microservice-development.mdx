@@ -1,0 +1,54 @@
+## Developing and Deploying Microservice Applications
+
+This three-day course will explore integration and deployment patterns for Microservice applications.
+
+### Prerequisites
+
+This course is designed for .NET Developers that know how to create HTTP Based Services. It is recommended that developers take [Web APIs with .NET](#web-apis-with-net) prior to taking this course.
+
+### Objectives
+
+While using HTTP APIs as the basis of our architecture, this course is designed to increase the "tool set" available to the developer working in a distributed microservice architecture to create reliable, scalable, and visible services that give the maximum flexibility. At the conclusion of this course, developers will be able to:
+
+#### Understand Integration Patterns and Anti-Patterns in Microserve Architectures
+
+> We will explore and implement a variety of service integration patterns including RPCs with _gRPC_, and messaging. We will learn techniques to break from the anti-pattern of integration, the dreaded "shared database" to provide greater reliability and autonomy of our services.
+
+#### Developing Services Like We Mean It
+
+> We will, from the beginning of the course, build our application using containers running in a local Kubernetes cluster, creating our YAML configuration as we go. We will understand the role of _ingress_ and _egress_ in orchestrated environments, and refine our ability to specify our requirements (memory, processor, storage) that our application will need in production.
+
+#### Developing Worker Services
+
+> We will use .NET to create "Worker Services" to process asynchronous background work in a reliable, scalable way.
+
+#### gRPC Deep Dive
+
+> We will learn to create high-performance services that communicate using gRPC with other services, increasing performance and reliability. We will create services that implement the request/response (Unity) model, client-streaming, server streaming, and bi-directional services.
+
+#### Developing Multi-Container Pods
+
+> We will learn when it is appropriate to deploy multi-container pods in Kubernetes by implementing common patterns like side-cars, ambassadors, and translators to solve common problems and remove platform-specific dependencies. We will also introduce the concept of a "service mesh" using these tools and show what they might offer your product.
+
+#### Observability of Services
+
+> Developers will learn various techniquest to gain insight into running services to detect issues, understand resource requirements, and detect networking problems. We will also explore the notorious "testing in production" techniques and how, despite the name, this adds another level of confidence in our software.
+
+#### Deployment Techniques
+
+> Developers in this training will implement rolling updates, canary features, blue/green deployments, and autoscaling to take advantage of the runtime environment. We will also see how we can "roll back" immediately if a production issue is detected.
+
+#### Developer Experience in Deployments
+
+> Developers will learn how to automate and streamline the creation of new services, along with their pipelines, using templates and technology like Helm Charts.
+
+### Expected Outcome of this Training
+
+At the conclusion of the Developing and Deploying Microservice Applications, developers will be able to:
+
+- See it all "come together" and work in an application that is "live".
+- Know and understand the options for integrating various services, including the advantages and drawbacks of each approach.
+- Learn to live in the "Live System" as a developer, gaining insight from observability and instrumentation to correct or expand architectural decisions.
+- Build gRPC services, including services meant to be part of a mult-container deployment (Pod)
+- Implement various deployment techniques to replace, update, and improve applications running in production.
+- Find ways to decrease the friction to create new services when a new service is called for.

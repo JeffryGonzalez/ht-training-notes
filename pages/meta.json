@@ -1,6 +1,11 @@
 {
     "index": "Home",
-    "courses": "Courses",
+    "training": "Hypertheory Training",
+    "devops-training": "DevOps Training Courses",
+    "angular-training": "Angular Training Courses",
+    "services-training": "Services Training Courses",
+    "intro": "Introduction to Programming",
+
     "youtube": "YouTube Videos",
     "topics": "Topics"
 }
