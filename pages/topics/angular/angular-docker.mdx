@@ -1,0 +1,112 @@
+import Callout from 'nextra-theme-docs/callout'
+
+# Building a Docker Image for your Angular App with Nginx
+
+
+
+<Callout>
+This was created on November 2, 2021.
+This is based on an Angular 12.x application.
+</Callout>
+
+## Creating the Dockerfile
+
+In the root of your Angular app's project directory, create a `Dockerfile`. 
+
+We will use a multi-stage build. Choose a version of the `node` base image that is closest to your locally installed version.
+
+```shell
+$ node --version
+v14.17.6
+```
+
+In the below Dockerfile you will need to change the `COPY --from...` line so that is uses the right path for your built application.
+
+```Dockerfile
+FROM node:14.17.6-slim AS build
+WORKDIR /dist/src/app
+
+RUN npm cache clean --force
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+FROM nginx:latest AS ngi
+COPY --from=build /dist/src/app/dist/courses-front-end /usr/share/nginx/html
+COPY /nginx.conf  /etc/nginx/conf.d/default.conf
+EXPOSE 80
+```
+## Docker Ignore
+
+Create a `.dockerignore` file in the root of your project that has at a minimum the following:
+
+```shell
+.git
+.editorconfig
+/.vscode/*
+/node_modules
+.gitignore
+```
+
+## Nginx Configuration
+
+Also in the root of your project, create an `nginx.conf` file, with content similiar to the following:
+
+```text
+server {
+  listen 80;
+  sendfile on;
+  default_type application/octet-stream;
+
+  gzip on;
+  gzip_http_version 1.1;
+  gzip_disable      "MSIE [1-6]\.";
+  gzip_min_length   256;
+  gzip_vary         on;
+  gzip_proxied      expired no-cache no-store private auth;
+  gzip_types        text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+  gzip_comp_level   9;
+
+  root /usr/share/nginx/html;
+
+  location ~ /index.html|.*\.json$ {
+  expires -1;
+  add_header Cache-Control 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0';
+  }
+
+  location ~ .*\.css$|.*\.js$ {
+    add_header Cache-Control 'max-age=31449600'; # one year
+  }
+  location / {
+    try_files $uri $uri/ /index.html =404;
+  }
+}
+```
+
+This adds gzip compression, and adds cache headers for the javascript and css files for one year.
+
+The last portion is *particularly* important (the `location / {...}`) as this tells NginX that instead of sending a 404 for any bad requests, just send `index.html`. This will make it so a load or a refesh on a url that containers Angular routing information will be ignored.
+
+## Build the Image
+
+Run the following (in the directory with your Dockerfile):
+
+```shell
+docker build -t jeffrygonzalez/super-angular-app:v1 .
+```
+
+Provide your own tag name and version, and don't forget the period at the end.
+
+To run it:
+
+```shell
+docker run -d -p 8080:80 jeffrygonzalez/super-angular-app:v1
+```
+
+And hit that sucker with your browsah at `http://localhost:8080`. Your magnifcent Angular app should appear. Check out the network tab for all good caching goodness.
+
+## Build Early, Build Often
+
+Remember you should be rebuilding and redistributing your images often, *even if none of the code changes*. When you build an Angular app, it uses "relative" information
+for browser support. 
