@@ -1,9 +1,8 @@
 {
     "index": "Training Overview",
-    "devops-services":"DevOps for Service Developers",
+    "devops-services":"Beginning .NET Service Development",
     "web-api": "Web APIs with .NET",
-    "developer-testing": "Developer Testing of Services",
+    "developer-testing": "Services Developer Testing",
     "microservice-development": "Microservice Development",
-    "event-driven": "Building Event-Driven Services",
-    "golang": "Building Services with Go"
+    "event-driven": "Building Event-Driven Services"
 }
