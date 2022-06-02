@@ -1,12 +1,75 @@
-import Callout from 'nextra-theme-docs/callout'
-## Event-Driven Architecture
-This three-day course will prepare students to design, develop, and deploy a services architecture based on Event-Driven architectural practices.
-Developers will utilize Apache Kafka as the backbone of their application.
+## Building Event Driven Services
+
+This three-day instructor led class will prepare students to plan, develop, and deploy Event Driven service architectures.
+
+The course will be a mixture of lecture, theory, design labs, coding exercises, and group discussion.
+
+This is a synchronous, instructor-led course and students will be requested to participate fully during the allotted course times.
+
+While Event Driven services can rely on a many broker technologies (IBM Event Streams, Azure Event Hubs, AWS Kinesis, etc.) we will utilize Apache Kafka as our platform in the class. "Just enough" Kafka architecture will be presented to put our work into context, but the principles and patterns can be applied to most streaming platforms.
+
 ### Prerequisites
-This course is designed to be a "graduate" level course for developers that have taken all the Hypertheory Training Services courses.
+
+This course is aimed at primarily .NET developers with a familiarity with service and, particularly, Microservice architectures. It is recommended that students take the Microservice Development course prior to attending this class.
+Some understanding of service integration patterns, including synchronous RPC (HTTP, gRPC) and messaging (Pub/Sub) are helpful.
+Some familiarity with Java and SQL are helpful, but not required.
 
 ### Objectives
 
-<Callout>
-  The Outline is Being Built Now And Will Be Released Third Quarter 2022
-</Callout>
+#### Why Event Driven Architecture
+
+We will discuss and explore the benefits and challenges of Event Driven services and where they fit into modern software architectures.
+An emphasis will be placed on the particular problems that can be solved by introducing event streaming.
+Warnings will be highlighted about antipatterns and possible pitfalls and how to avoid them.
+
+#### Event Driven Microservice Architecture
+
+Getting your head around events and event streaming is a new way of thinking about software architecture for many developers and has repercussions on the architecture of everything from the UI to the database. The good news is many of the benefits of event streaming can be introduced in incremental ways.
+We will start with a demonstration of a synchronous style service and user interface and show how events can actually simplify the work, particularly at the "edges" and allow application developers to move quickly and focus on delivering value by separating the "what" from "how".
+This section will also include a brief introduction to Apache Kafka, and how it is designed as a service, and key concepts and components.
+
+##### Contracts: Messaging Patterns and Message Design
+
+In this section we will explore mapping the business topology to events, including event identification, definition and design.
+We will learn the two main types of events: and their appropriate usage, including repercussions on scalability: Unkeyed events and Entity events.
+We will discuss, demonstrate, and implement using explicit schema for events, including options such as JSON-Schema, Protobuf, and Apache Avro.
+We will also look in detail at patterns in Event contract design to make them resilient to versioning, and how to handle contract versioning when the time comes.
+
+#### Producing and Consuming Events
+
+In this section we will implement a variety of services that either produce events, consume events, or both.
+We will also extend our discussion started in the Microservice Development course of DAPR (the Distributed Application Runtime) and how it can insulate service developers from the complexity of managing services that rely on a particular streaming platform.
+We will explore and explain the guarantees provided for message delivery.
+
+#### Processing Event Streams
+
+In the Producing and Consuming Events section, our architecture will be a close approximation of a standard Pub/Sub system. The true power of Event Streaming begins to unlock with the introduction of stream processing.
+We will create both stateful and stateless stream processors, explore standard patterns for processing the stream, and experience how stream processing introduces a form of "reactive programming" that unlocks huge opportunities for delivering value over time.
+We will create programmatic stream processors, and introduce kSQL as a tool for abstracting stream processing away from imperative code with a special dialect of SQL.
+
+#### Data Liberation and Materialization
+
+Event streaming allows you to bring the data from the "inside" (traditional, centralized RDBMS) to the "outside" where your applications need it.
+It also means that new services can be added easily at any time because the obstacles of "walled data" have been removed. The even stream becomes our "source of truth", and new services can be introduced, and even "time travel" and process events from the past.
+We will look at ways to connect databases using event streams, including patterns like Change Data Capture.
+
+#### Integrating Event Driven Services
+
+These next two sections will be an exploration of various techniques for introducing event streaming into existing platforms, integrating with event-ignorant services, and so-called "legacy" systems.
+
+#### Deploying Event Driven Services
+
+This will be a short topic demonstrating how Event Driven services reinforce the CI/CD "ideal", and how by moving to Events your organization will be able to have the agility to quickly respond to the needs of the business.
+
+## Expected Outcome of this Training
+
+At the conclusion of the Building Event Driven Services training, developers will be able to:
+
+- Understand and apply Event Driven architecture patterns
+- Create services that produce and consume events
+- Design event contracts and understand versioning of contracts
+- Understand the fundamental patterns and benefits of stream processing
+- Understand data liberation, and how to design services that "own" data and those that consume that data.
+- Integrate Event Driven services into existing application architectures, and patterns for working with legacy systems.
+
+This course is not intended to be a thorough introduction to any particular streaming platform, but will utilize Apache Kafka, with aspects from the Confluent Kafka platform. While securing event streams will be discussed, no particular guidance will be given in this area as it varies so much by application and environment (regulatory, etc.).
